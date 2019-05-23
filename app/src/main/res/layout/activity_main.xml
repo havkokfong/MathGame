@@ -11,7 +11,7 @@
         android:id="@+id/questionBox"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/white" />
+        android:background="@color/light_blue"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/basket"
             android:layout_width="140dp"
-            android:layout_height="155dp"
+            android:layout_height="87dp"
             android:layout_gravity="bottom"
             android:src="@drawable/basket" />
 
