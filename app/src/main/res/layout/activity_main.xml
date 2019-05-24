@@ -95,6 +95,7 @@
                 android:textSize="30sp"
                 android:background="@color/white"
                 android:layout_marginTop="50dp"
+                android:onClick="startGame"
                 />
 
             <Button
@@ -106,6 +107,7 @@
                 android:textSize="30sp"
                 android:background="@color/white"
                 android:layout_marginTop="50dp"
+                android:onClick="quitGame"
                 />
 
         </LinearLayout>
