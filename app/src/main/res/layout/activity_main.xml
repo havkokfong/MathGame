@@ -23,39 +23,92 @@
             android:layout_width="140dp"
             android:layout_height="87dp"
             android:layout_gravity="bottom"
-            android:src="@drawable/basket" />
+            android:src="@drawable/basket"
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/soccerBall_1"
             android:layout_width="99dp"
             android:layout_height="112dp"
-            android:src="@drawable/soccer_ball" />
+            android:src="@drawable/soccer_ball"
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/soccerBall_2"
             android:layout_width="99dp"
             android:layout_height="112dp"
-            android:src="@drawable/soccer_ball" />
+            android:src="@drawable/soccer_ball"
+            android:visibility="invisible"/>
 
 
         <ImageView
             android:id="@+id/soccerBall_3"
             android:layout_width="99dp"
             android:layout_height="112dp"
-            android:src="@drawable/soccer_ball" />
+            android:src="@drawable/soccer_ball"
+            android:visibility="invisible"/>
 
         <ImageView
             android:id="@+id/soccerBall_4"
             android:layout_width="99dp"
             android:layout_height="112dp"
-            android:src="@drawable/soccer_ball" />
+            android:src="@drawable/soccer_ball"
+            android:visibility="invisible"/>
 
+        <LinearLayout
+            android:id="@+id/start_game"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
-        <ImageView
-            android:id="@+id/soccerBall_5"
-            android:layout_width="99dp"
-            android:layout_height="112dp"
-            android:src="@drawable/soccer_ball" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_title"
+                android:textSize="40sp"
+                android:textAlignment="center"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="200dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/high_score_text"
+                android:textSize="35sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"
+                />
+
+            <Button
+                android:id="@+id/start_button"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/start_button_text"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@color/white"
+                android:layout_marginTop="50dp"
+                />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/quit_button_text"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:background="@color/white"
+                android:layout_marginTop="50dp"
+                />
+
+        </LinearLayout>
 
     </FrameLayout>
 
