@@ -4,4 +4,5 @@
     <string name="start_button_text">Start</string>
     <string name="quit_button_text">Quit</string>
     <string name="high_score_text">High score: 0</string>
+    <string name="score_text">Score: 0</string>
 </resources>

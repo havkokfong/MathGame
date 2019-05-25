@@ -14,9 +14,22 @@
         android:background="@color/light_blue"/>
 
     <FrameLayout
+        android:id="@+id/gameFrame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background_2">
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/score_text"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp" />
 
         <ImageView
             android:id="@+id/basket"
@@ -58,7 +71,7 @@
         <LinearLayout
             android:id="@+id/start_game"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal">
 
@@ -75,6 +88,7 @@
                 />
 
             <TextView
+                android:id="@+id/high_Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/high_score_text"
