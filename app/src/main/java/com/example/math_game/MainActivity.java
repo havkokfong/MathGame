@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout linearLayout;
 
     // Image
-    private ImageView basket, ball_1, ball_2, ball_3, ball_4;
+    private ImageView basket;
 
     // Size
     private int basketSize;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private float basketX, basketY;
 
     // Score
-    private TextView scoreLabel, highScoreLabel;
+    private TextView scoreLabel, highScoreLabel, ball_1, ball_2, ball_3, ball_4;
     private int score, highscore, timeCount;
 
     // Class
@@ -52,25 +52,40 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         frameLayout = findViewById(R.id.gameFrame);
         linearLayout = findViewById(R.id.start_game);
+        basket = findViewById(R.id.basket_image);
         ball_1 = findViewById(R.id.soccerBall_1);
         ball_2 = findViewById(R.id.soccerBall_2);
         ball_3 = findViewById(R.id.soccerBall_3);
         ball_4 = findViewById(R.id.soccerBall_4);
         scoreLabel = findViewById(R.id.score);
         highScoreLabel = findViewById(R.id.high_Score);
-
-//        soccer_ball = getResources().getDrawable(R.drawable.soccer_ball);
-//        basket = getResources().getDrawable(R.drawable.basket);
-
-
     }
 
     public void changePos(){
+
+        //ball_1
+        ball_1Y += 12;
+        float ball_1CenterX = ball_1X ;
+        float ball_1CenterY = ball_1Y;
+
+        if (hitCheck(ball_1CenterX, ball_1CenterY)){
+            ball_1Y = frameHeight + 100;
+        }
+
+        if (ball_1Y > frameHeight){
+            ball_1Y -= frameHeight;
+            ball_1X = (float) Math.floor(Math.random() * (frameWidth - ball_1.getWidth()));
+        }
+        ball_1.setX(ball_1X);
+        ball_1.setY(ball_1Y);
+
+
         // Moving
         if (action_flag) {
             //when touch
             basketX += 14;
         }else{
+            //releasing
             basketX -= 14;
         }
 
@@ -79,11 +94,20 @@ public class MainActivity extends AppCompatActivity {
             basketX = 0;
         }
         if (frameWidth - basketSize < basketX){
-            basketX = frameWidth - basketSize;
+            basketX = frameWidth - basketSize ;
 
         }
         basket.setX(basketX);
     }
+
+
+    public boolean hitCheck(float x, float y){
+        if (basketX <= x && x <= basketX + basketSize && basketY <= y && y <= frameHeight ){
+            return true;
+        }
+        return false;
+    }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -104,7 +128,6 @@ public class MainActivity extends AppCompatActivity {
         if (frameHeight == 0){
             frameHeight = frameLayout.getHeight();
             frameWidth = frameLayout.getWidth();
-            initialFrameWidth = frameWidth;
 
             basketSize = basket.getHeight();
             basketX = basket.getX();
@@ -112,11 +135,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         basket.setX(0.0f);
-        ball_1.setX(3000.0f);
-        ball_2.setX(3000.0f);
-        ball_3.setX(3000.0f);
-        ball_4.setX(3000.0f);
-
         ball_1Y = ball_1.getY();
         ball_2Y = ball_2.getY();
         ball_3Y = ball_3.getY();
@@ -140,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            changePos();
+                           changePos();
                         }
                     });
                 }
