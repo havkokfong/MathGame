@@ -36,11 +36,12 @@ public class MainActivity extends AppCompatActivity {
     private float ball_3X, ball_3Y;
     private float ball_4X, ball_4Y;
     private float basketX, basketY;
+    private int speed1, speed2, speed3, speed4;
 
     // Score
-    private TextView scoreLabel, highScoreLabel, ball_1, ball_2, ball_3, ball_4;
+    private TextView scoreLabel, liveLabel, highScoreLabel, ball_1, ball_2, ball_3, ball_4;
 
-    private int score, highscore, timeCount;
+    private int score, highscore, timeCount, live;
 
     //Question
     private int num1, num2, result, ranSign, wrongNum, ranWrongNum, wrongNum2, wrongNum3;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         questionBox2 = findViewById(R.id.questionBox2);
         questionBox3 = findViewById(R.id.questionBox3);
         scoreLabel = findViewById(R.id.score);
+        liveLabel = findViewById(R.id.live);
         highScoreLabel = findViewById(R.id.high_Score);
         random = new Random();
     }
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
     public void changePos(){
 
         //ball_1
-        ball_1Y += 5;
+        ball_1Y += speed1;
         float ball_1CenterX = ball_1X ;
         float ball_1CenterY = ball_1Y;
 
@@ -91,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
             score += 10;
             result = 0;
             scoreLabel.setText("Score: " + score);
+            ball_2Y = frameHeight;
+            ball_3Y = frameHeight;
+            ball_4Y = frameHeight;
             question();
         }
 
@@ -103,12 +108,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_2
-        ball_2Y += 5;
+        ball_2Y += speed2;
         float ball_2CenterX = ball_2X ;
         float ball_2CenterY = ball_2Y;
 
         if (hitCheck(ball_2CenterX, ball_2CenterY)){
             ball_2Y = frameHeight + 100;
+            live -= 1;
+            liveLabel.setText("Live: " + live);
+            ball_1Y += frameHeight;
+            ball_3Y += frameHeight;
+            ball_4Y += frameHeight;
         }
 
         if (ball_2Y > frameHeight){
@@ -121,12 +131,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_3
-        ball_3Y += 5;
+        ball_3Y += speed3;
         float ball_3CenterX = ball_3X ;
         float ball_3CenterY = ball_3Y;
 
         if (hitCheck(ball_3CenterX, ball_3CenterY)){
             ball_3Y = frameHeight + 100;
+            live -= 1;
+            liveLabel.setText("Live: " + live);
+
+            ball_2Y = frameHeight;
+            ball_1Y = frameHeight;
+            ball_4Y = frameHeight;
         }
 
         if (ball_3Y > frameHeight){
@@ -139,12 +155,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_4
-        ball_4Y += 5;
+        ball_4Y += speed4;
         float ball_4CenterX = ball_4X ;
         float ball_4CenterY = ball_4Y;
 
         if (hitCheck(ball_4CenterX, ball_4CenterY)){
             ball_4Y = frameHeight + 100;
+            live -= 1;
+            liveLabel.setText("Live: " + live);
+            ball_2Y += frameHeight;
+            ball_3Y += frameHeight;
+            ball_1Y += frameHeight;
         }
 
         if (ball_4Y > frameHeight){
@@ -153,6 +174,11 @@ public class MainActivity extends AppCompatActivity {
         }
         ball_4.setX(ball_4X);
         ball_4.setY(ball_4Y);
+
+        // Game Over
+        if (live == 0){
+            gameOver();
+        }
 
 
         // Moving
@@ -286,6 +312,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         linearLayout.setVisibility(View.VISIBLE);
+        liveLabel.setVisibility(View.INVISIBLE);
+        scoreLabel.setVisibility(View.INVISIBLE);
+        titleLabel.setVisibility(View.VISIBLE);
+        questionBox3.setVisibility(View.INVISIBLE);
+        questionBox.setVisibility(View.INVISIBLE);
+        questionBox2.setVisibility(View.INVISIBLE);
         basket.setVisibility(View.INVISIBLE);
         ball_1.setVisibility(View.INVISIBLE);
         ball_2.setVisibility(View.INVISIBLE);
@@ -317,19 +349,27 @@ public class MainActivity extends AppCompatActivity {
         ball_3Y = ball_3.getY();
         ball_4Y = ball_4.getY();
 
+        speed1 = random.nextInt(15);
+        speed2 = random.nextInt(15);
+        speed3 = random.nextInt(15);
+        speed4 = random.nextInt(15);
+
         questionBox.setVisibility(View.VISIBLE);
         questionBox2.setVisibility(View.VISIBLE);
         questionBox3.setVisibility(View.VISIBLE);
         scoreLabel.setVisibility(View.VISIBLE);
+        liveLabel.setVisibility(View.VISIBLE);
         basket.setVisibility(View.VISIBLE);
         ball_1.setVisibility(View.VISIBLE);
         ball_2.setVisibility(View.VISIBLE);
         ball_3.setVisibility(View.VISIBLE);
         ball_4.setVisibility(View.VISIBLE);
 
+        live = 5;
         timeCount = 0;
         score = 0;
         scoreLabel.setText("Score: 0");
+        liveLabel.setText("Live: " + live);
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
