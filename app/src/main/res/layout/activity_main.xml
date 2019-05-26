@@ -93,6 +93,10 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/soccer_ball"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:visibility="invisible" />
 
         <TextView
@@ -100,6 +104,10 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/soccer_ball_2"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:visibility="invisible" />
 
 
@@ -108,13 +116,21 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/soccer_ball_3"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:visibility="invisible" />
 
         <TextView
             android:id="@+id/soccerBall_4"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:background="@drawable/soccer_ball_3"
+            android:background="@drawable/soccer_ball_4"
+            android:gravity="center"
+            android:textColor="@color/colorAccent"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:visibility="invisible" />
 
         <LinearLayout

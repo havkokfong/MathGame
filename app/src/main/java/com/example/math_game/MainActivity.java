@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private int score, highscore, timeCount;
 
     //Question
-    private int num1, num2, result;
+    private int num1, num2, result, ranSign, wrongNum, ranWrongNum, wrongNum2, wrongNum3;
     private TextView questionBox, questionBox2, questionBox3;
 
     //Title
@@ -76,28 +77,21 @@ public class MainActivity extends AppCompatActivity {
         scoreLabel = findViewById(R.id.score);
         highScoreLabel = findViewById(R.id.high_Score);
         random = new Random();
-        num1 = random.nextInt(99);
-        num2 = random.nextInt(99);
-        symList = new ArrayList();
-        symList.add("+");
-        symList.add("-");
-        symList.add("*");
-        symList.add("/");
-
     }
 
     public void changePos(){
-        questionBox.setText(String.valueOf(num1));
-        questionBox2.setText("+");
-        questionBox3.setText(String.valueOf(num2));
 
         //ball_1
-        ball_1Y += 12;
+        ball_1Y += 5;
         float ball_1CenterX = ball_1X ;
         float ball_1CenterY = ball_1Y;
 
         if (hitCheck(ball_1CenterX, ball_1CenterY)){
             ball_1Y = frameHeight + 100;
+            score += 10;
+            result = 0;
+            scoreLabel.setText("Score: " + score);
+            question();
         }
 
         if (ball_1Y > frameHeight){
@@ -109,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_2
-        ball_2Y += 12;
+        ball_2Y += 5;
         float ball_2CenterX = ball_2X ;
         float ball_2CenterY = ball_2Y;
 
@@ -127,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_3
-        ball_3Y += 12;
+        ball_3Y += 5;
         float ball_3CenterX = ball_3X ;
         float ball_3CenterY = ball_3Y;
 
@@ -145,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //ball_4
-        ball_4Y += 12;
+        ball_4Y += 5;
         float ball_4CenterX = ball_4X ;
         float ball_4CenterY = ball_4Y;
 
@@ -159,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
         }
         ball_4.setX(ball_4X);
         ball_4.setY(ball_4Y);
-
 
 
         // Moving
@@ -177,7 +170,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (frameWidth - basketSize < basketX){
             basketX = frameWidth - basketSize ;
-
         }
         basket.setX(basketX);
     }
@@ -203,9 +195,109 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    //Question
+    public void question(){
+        ranSign = random.nextInt(3);
+        ranWrongNum = random.nextInt(5) + 1;
+        num1 = random.nextInt(10);
+        num2 = random.nextInt(10);
+
+        if (ranSign == 0){
+            result = 0;
+            wrongNum = 0;
+            wrongNum2 = 0;
+            wrongNum3 = 0;
+            result = num1 + num2;
+            wrongNum = result + random.nextInt(5) + 1;
+            wrongNum2 = result - random.nextInt(7) + 1;
+            wrongNum3 = result + random.nextInt(2) + 1;
+            questionBox.setText(String.valueOf(num1));
+            questionBox2.setText("+");
+            questionBox3.setText(String.valueOf(num2));
+            ball_1.setText(String.valueOf(result));
+            ball_2.setText(String.valueOf(wrongNum));
+            ball_3.setText(String.valueOf(wrongNum2));
+            ball_4.setText(String.valueOf(wrongNum3));
+        }
+        else if (ranSign == 1){
+            result = 0;
+            wrongNum = 0;
+            wrongNum2 = 0;
+            wrongNum3 = 0;
+            result = num1 - num2;
+            wrongNum = result + random.nextInt(5) + 1;
+            wrongNum2 = result - random.nextInt(7) + 1;
+            wrongNum3 = result + random.nextInt(2) + 1;
+            questionBox.setText(String.valueOf(num1));
+            questionBox2.setText("-");
+            questionBox3.setText(String.valueOf(num2));
+            ball_1.setText(String.valueOf(result));
+            ball_2.setText(String.valueOf(wrongNum));
+            ball_3.setText(String.valueOf(wrongNum2));
+            ball_4.setText(String.valueOf(wrongNum3));
+        }
+        else if (ranSign == 2){
+            result = 0;
+            wrongNum = 0;
+            wrongNum2 = 0;
+            wrongNum3 = 0;
+            result = num1 * num2;
+            wrongNum = result + random.nextInt(5) + 1;
+            wrongNum2 = result - random.nextInt(7) + 1;
+            wrongNum3 = result + random.nextInt(2) + 1;
+            questionBox.setText(String.valueOf(num1));
+            questionBox2.setText("*");
+            questionBox3.setText(String.valueOf(num2));
+            ball_1.setText(String.valueOf(result));
+            ball_2.setText(String.valueOf(wrongNum));
+            ball_3.setText(String.valueOf(wrongNum2));
+            ball_4.setText(String.valueOf(wrongNum3));
+        }
+        else if (ranSign == 3){
+            result = 0;
+            wrongNum = 0;
+            wrongNum2 = 0;
+            wrongNum3 = 0;
+            result = num1 / num2;
+            wrongNum = result + random.nextInt(5) + 1;
+            wrongNum2 = result - random.nextInt(7) + 1;
+            wrongNum3 = result + random.nextInt(2) + 1;
+            questionBox.setText(String.valueOf(num1));
+            questionBox2.setText("/");
+            questionBox3.setText(String.valueOf(num2));
+            ball_1.setText(String.valueOf(result));
+            ball_2.setText(String.valueOf(wrongNum));
+            ball_3.setText(String.valueOf(wrongNum2));
+            ball_4.setText(String.valueOf(wrongNum3));
+        }
+
+
+    }
+
+    public void gameOver(){
+        timer.cancel();
+        timer = null;
+        start_flag = false;
+
+        try{
+            TimeUnit.SECONDS.sleep(1);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+        linearLayout.setVisibility(View.VISIBLE);
+        basket.setVisibility(View.INVISIBLE);
+        ball_1.setVisibility(View.INVISIBLE);
+        ball_2.setVisibility(View.INVISIBLE);
+        ball_3.setVisibility(View.INVISIBLE);
+        ball_4.setVisibility(View.INVISIBLE);
+
+    }
+
 
     // Start game
     public void startGame(View view){
+        question();
         start_flag = true;
         linearLayout.setVisibility(View.INVISIBLE);
         titleLabel.setVisibility(View.INVISIBLE);
@@ -228,6 +320,7 @@ public class MainActivity extends AppCompatActivity {
         questionBox.setVisibility(View.VISIBLE);
         questionBox2.setVisibility(View.VISIBLE);
         questionBox3.setVisibility(View.VISIBLE);
+        scoreLabel.setVisibility(View.VISIBLE);
         basket.setVisibility(View.VISIBLE);
         ball_1.setVisibility(View.VISIBLE);
         ball_2.setVisibility(View.VISIBLE);
