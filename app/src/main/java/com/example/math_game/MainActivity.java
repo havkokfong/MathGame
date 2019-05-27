@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     // Frame
     private FrameLayout frameLayout;
     private int frameWidth, frameHeight, initialFrameWidth;
-    private LinearLayout linearLayout;
+    private LinearLayout linearLayout, mainLayout;
 
     // Image
     private ImageView basket;
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainLayout = findViewById(R.id.mainLayout);
         frameLayout = findViewById(R.id.gameFrame);
         linearLayout = findViewById(R.id.start_game);
-        titleLabel = findViewById(R.id.titleText);
         basket = findViewById(R.id.basket_image);
         ball_1 = findViewById(R.id.soccerBall_1);
         ball_2 = findViewById(R.id.soccerBall_2);
@@ -318,6 +318,7 @@ public class MainActivity extends AppCompatActivity {
         timer.cancel();
         timer = null;
         start_flag = false;
+        mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
 
         try{
             TimeUnit.SECONDS.sleep(1);
@@ -328,7 +329,6 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.setVisibility(View.VISIBLE);
         liveLabel.setVisibility(View.INVISIBLE);
         scoreLabel.setVisibility(View.INVISIBLE);
-        titleLabel.setVisibility(View.VISIBLE);
         questionBox3.setVisibility(View.INVISIBLE);
         questionBox.setVisibility(View.INVISIBLE);
         questionBox2.setVisibility(View.INVISIBLE);
@@ -354,7 +354,8 @@ public class MainActivity extends AppCompatActivity {
         question();
         start_flag = true;
         linearLayout.setVisibility(View.INVISIBLE);
-        titleLabel.setVisibility(View.INVISIBLE);
+        mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud_game);
+
 
         if (frameHeight == 0){
             frameHeight = frameLayout.getHeight();
