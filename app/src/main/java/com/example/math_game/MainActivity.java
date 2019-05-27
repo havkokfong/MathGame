@@ -1,5 +1,7 @@
 package com.example.math_game;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Score
     private TextView scoreLabel, liveLabel, highScoreLabel, ball_1, ball_2, ball_3, ball_4;
+    private SharedPreferences score_record;
 
     private int score, highscore, timeCount, live;
 
@@ -79,9 +82,19 @@ public class MainActivity extends AppCompatActivity {
         liveLabel = findViewById(R.id.live);
         highScoreLabel = findViewById(R.id.high_Score);
         random = new Random();
+        score_record = getSharedPreferences("Game_Score", Context.MODE_PRIVATE);
+        highscore = score_record.getInt("HIGH_SCORE", 0);
+        highScoreLabel.setText("High Score: " + highscore);
+
     }
 
     public void changePos(){
+
+        //Ball Speed
+        speed1 = random.nextInt((15 - 5) + 1) + 5;
+        speed2 = random.nextInt((10 - 3) + 1) + 3;
+        speed3 = random.nextInt((12 - 7) + 1) + 7;
+        speed4 = random.nextInt((15 - 8) + 1) + 8;
 
         //ball_1
         ball_1Y += speed1;
@@ -139,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
             ball_3Y = frameHeight + 100;
             live -= 1;
             liveLabel.setText("Live: " + live);
-
             ball_2Y = frameHeight;
             ball_1Y = frameHeight;
             ball_4Y = frameHeight;
+
         }
 
         if (ball_3Y > frameHeight){
@@ -198,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
             basketX = frameWidth - basketSize ;
         }
         basket.setX(basketX);
+
     }
 
     // Hitting Check
@@ -234,9 +248,9 @@ public class MainActivity extends AppCompatActivity {
             wrongNum2 = 0;
             wrongNum3 = 0;
             result = num1 + num2;
-            wrongNum = result + random.nextInt(5) + 1;
-            wrongNum2 = result - random.nextInt(7) + 1;
-            wrongNum3 = result + random.nextInt(2) + 1;
+            wrongNum = result + random.nextInt((5 - 2) + 1) + 2;
+            wrongNum2 = result - random.nextInt((7 - 4) + 1) + 4;
+            wrongNum3 = result + random.nextInt((3 + 2) + 1) + 2;
             questionBox.setText(String.valueOf(num1));
             questionBox2.setText("+");
             questionBox3.setText(String.valueOf(num2));
@@ -251,9 +265,9 @@ public class MainActivity extends AppCompatActivity {
             wrongNum2 = 0;
             wrongNum3 = 0;
             result = num1 - num2;
-            wrongNum = result + random.nextInt(5) + 1;
-            wrongNum2 = result - random.nextInt(7) + 1;
-            wrongNum3 = result + random.nextInt(2) + 1;
+            wrongNum = result + random.nextInt((5 - 2) + 1) + 2;
+            wrongNum2 = result - random.nextInt((7 - 4) + 1) + 4;
+            wrongNum3 = result + random.nextInt((3 + 2) + 1) + 2;
             questionBox.setText(String.valueOf(num1));
             questionBox2.setText("-");
             questionBox3.setText(String.valueOf(num2));
@@ -268,9 +282,9 @@ public class MainActivity extends AppCompatActivity {
             wrongNum2 = 0;
             wrongNum3 = 0;
             result = num1 * num2;
-            wrongNum = result + random.nextInt(5) + 1;
-            wrongNum2 = result - random.nextInt(7) + 1;
-            wrongNum3 = result + random.nextInt(2) + 1;
+            wrongNum = result + random.nextInt((5 - 2) + 1) + 2;
+            wrongNum2 = result - random.nextInt((7 - 4) + 1) + 4;
+            wrongNum3 = result + random.nextInt((3 + 2) + 1) + 2;
             questionBox.setText(String.valueOf(num1));
             questionBox2.setText("*");
             questionBox3.setText(String.valueOf(num2));
@@ -285,9 +299,9 @@ public class MainActivity extends AppCompatActivity {
             wrongNum2 = 0;
             wrongNum3 = 0;
             result = num1 / num2;
-            wrongNum = result + random.nextInt(5) + 1;
-            wrongNum2 = result - random.nextInt(7) + 1;
-            wrongNum3 = result + random.nextInt(2) + 1;
+            wrongNum = result + random.nextInt((5 - 2) + 1) + 2;
+            wrongNum2 = result - random.nextInt((7 - 4) + 1) + 4;
+            wrongNum3 = result + random.nextInt((3 + 2) + 1) + 2;
             questionBox.setText(String.valueOf(num1));
             questionBox2.setText("/");
             questionBox3.setText(String.valueOf(num2));
@@ -324,6 +338,14 @@ public class MainActivity extends AppCompatActivity {
         ball_3.setVisibility(View.INVISIBLE);
         ball_4.setVisibility(View.INVISIBLE);
 
+        //Update score
+        if (score > highscore){
+            highscore = score;
+            highScoreLabel.setText("High Score: " + highscore);
+            SharedPreferences.Editor editor = score_record.edit();
+            editor.putInt("HIGH_SCORE", highscore);
+            editor.commit();
+        }
     }
 
 
@@ -348,11 +370,6 @@ public class MainActivity extends AppCompatActivity {
         ball_2Y = ball_2.getY();
         ball_3Y = ball_3.getY();
         ball_4Y = ball_4.getY();
-
-        speed1 = random.nextInt(15);
-        speed2 = random.nextInt(15);
-        speed3 = random.nextInt(15);
-        speed4 = random.nextInt(15);
 
         questionBox.setVisibility(View.VISIBLE);
         questionBox2.setVisibility(View.VISIBLE);
@@ -388,6 +405,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quitGame(View view){
-
+        finish();
     }
 }
