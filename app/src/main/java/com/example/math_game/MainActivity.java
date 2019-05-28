@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean start_flag = false;
     private boolean action_flag = false;
 
+    //setting_preferences
+    private SharedPreferences preferences, object_preferences;
+    private int theme, object;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,9 +88,50 @@ public class MainActivity extends AppCompatActivity {
         highScoreLabel = findViewById(R.id.high_Score);
         random = new Random();
         score_record = getSharedPreferences("Game_Score", Context.MODE_PRIVATE);
+        preferences = getSharedPreferences("theme_value", MODE_PRIVATE);
+        object_preferences = getSharedPreferences("object_value", MODE_PRIVATE);
         highscore = score_record.getInt("HIGH_SCORE", 0);
         highScoreLabel.setText("High Score: " + highscore);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        theme = preferences.getInt("theme_value", 0);
+        if (theme == 0){
+            mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
+        }
+        else if (theme == 1){
+            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+        }
+        else if (theme == 2){
+            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+        }
+        else if (theme == 3){
+            mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud);
+        }
+
+        object = object_preferences.getInt("object_value", 0);
+
+        if (object == 0){
+            ball_1.setBackgroundResource(R.drawable.soccer_ball);
+            ball_2.setBackgroundResource(R.drawable.soccer_ball_2);
+            ball_3.setBackgroundResource(R.drawable.soccer_ball_3);
+            ball_4.setBackgroundResource(R.drawable.soccer_ball_4);
+        }
+        else if (object == 1){
+            ball_1.setBackgroundResource(R.drawable.stone);
+            ball_2.setBackgroundResource(R.drawable.stone_2);
+            ball_3.setBackgroundResource(R.drawable.stone_3);
+            ball_4.setBackgroundResource(R.drawable.stone_4);
+        }
+        else if(object == 2){
+            ball_1.setBackgroundResource(R.drawable.bottle);
+            ball_2.setBackgroundResource(R.drawable.bottle_2);
+            ball_3.setBackgroundResource(R.drawable.bottle_3);
+            ball_4.setBackgroundResource(R.drawable.bottle_4);
+        }
     }
 
     public void changePos(){
@@ -319,7 +364,19 @@ public class MainActivity extends AppCompatActivity {
         timer.cancel();
         timer = null;
         start_flag = false;
-        mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
+        theme = preferences.getInt("theme_value", 0);
+        if (theme == 0){
+            mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
+        }
+        else if (theme == 1){
+            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+        }
+        else if (theme == 2){
+            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+        }
+        else if (theme == 3){
+            mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud);
+        }
 
         try{
             TimeUnit.SECONDS.sleep(1);
@@ -355,7 +412,19 @@ public class MainActivity extends AppCompatActivity {
         question();
         start_flag = true;
         linearLayout.setVisibility(View.INVISIBLE);
-        mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud_game);
+        theme = preferences.getInt("theme_value", 0);
+        if (theme == 0){
+            mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud_game);
+        }
+        else if (theme == 1){
+            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud_game);
+        }
+        else if (theme == 2){
+            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud_game);
+        }
+        else if (theme == 3){
+            mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud_game);
+        }
 
 
         if (frameHeight == 0){
