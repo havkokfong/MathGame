@@ -48,7 +48,7 @@
             android:id="@+id/choose_2"
             android:layout_width="70dp"
             android:layout_height="100dp"
-            android:background="@drawable/background_orange_with_cloud_game"
+            android:background="@drawable/background_grass_with_cloud_game"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:onClick="orangeColor"/>
@@ -57,7 +57,7 @@
             android:id="@+id/choose_3"
             android:layout_width="70dp"
             android:layout_height="100dp"
-            android:background="@drawable/background_purple_with_cloud_game"
+            android:background="@drawable/background_mountain_game"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
             android:onClick="purpleColor"/>

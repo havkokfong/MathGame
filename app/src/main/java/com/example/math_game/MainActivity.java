@@ -103,10 +103,10 @@ public class MainActivity extends AppCompatActivity {
             mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
         }
         else if (theme == 1){
-            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+            mainLayout.setBackgroundResource(R.drawable.background_grass_with_cloud);
         }
         else if (theme == 2){
-            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+            mainLayout.setBackgroundResource(R.drawable.background_mountain);
         }
         else if (theme == 3){
             mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud);
@@ -369,10 +369,10 @@ public class MainActivity extends AppCompatActivity {
             mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud);
         }
         else if (theme == 1){
-            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+            mainLayout.setBackgroundResource(R.drawable.background_grass_with_cloud);
         }
         else if (theme == 2){
-            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+            mainLayout.setBackgroundResource(R.drawable.background_mountain);
         }
         else if (theme == 3){
             mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud);
@@ -417,10 +417,10 @@ public class MainActivity extends AppCompatActivity {
             mainLayout.setBackgroundResource(R.drawable.background_blue_with_cloud_game);
         }
         else if (theme == 1){
-            mainLayout.setBackgroundResource(R.drawable.background_orange_with_cloud_game);
+            mainLayout.setBackgroundResource(R.drawable.background_grass_with_cloud_game);
         }
         else if (theme == 2){
-            mainLayout.setBackgroundResource(R.drawable.background_purple_with_cloud_game);
+            mainLayout.setBackgroundResource(R.drawable.background_mountain_game);
         }
         else if (theme == 3){
             mainLayout.setBackgroundResource(R.drawable.background_natural_with_cloud_game);

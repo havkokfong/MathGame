@@ -31,10 +31,10 @@ public class Settings extends AppCompatActivity {
             setting_layout.setBackgroundResource(R.drawable.background_blue_with_cloud);
         }
         else if (theme == 1){
-            setting_layout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+            setting_layout.setBackgroundResource(R.drawable.background_grass_with_cloud);
         }
         else if (theme == 2){
-            setting_layout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+            setting_layout.setBackgroundResource(R.drawable.background_mountain);
         }
         else if (theme == 3){
             setting_layout.setBackgroundResource(R.drawable.background_natural_with_cloud);
@@ -47,12 +47,12 @@ public class Settings extends AppCompatActivity {
     }
 
     public void orangeColor(View view){
-        setting_layout.setBackgroundResource(R.drawable.background_orange_with_cloud);
+        setting_layout.setBackgroundResource(R.drawable.background_grass_with_cloud);
         preferences.edit().putInt("theme_value", 1).apply();
     }
 
     public void purpleColor(View view){
-        setting_layout.setBackgroundResource(R.drawable.background_purple_with_cloud);
+        setting_layout.setBackgroundResource(R.drawable.background_mountain);
         preferences.edit().putInt("theme_value", 2).apply();
     }
     public void natureColor(View view){
