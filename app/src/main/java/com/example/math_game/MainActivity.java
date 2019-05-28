@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private Timer timer;
     private Handler handler = new Handler();
     private Random random;
-    private ArrayList symList;
+    private SoundPlayer soundPlayer;
 
     // Status
     private boolean start_flag = false;
@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        soundPlayer = new SoundPlayer(this);
+
         mainLayout = findViewById(R.id.mainLayout);
         frameLayout = findViewById(R.id.gameFrame);
         linearLayout = findViewById(R.id.start_game);
@@ -142,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         float ball_1CenterY = ball_1Y;
 
         if (hitCheck(ball_1CenterX, ball_1CenterY)){
+            soundPlayer.playCorrectSound();
             ball_1Y = frameHeight + 100;
             score += 10;
             result = 0;
@@ -166,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
         float ball_2CenterY = ball_2Y;
 
         if (hitCheck(ball_2CenterX, ball_2CenterY)){
+            soundPlayer.playIncorrectSound();
             ball_2Y = frameHeight + 100;
             live -= 1;
             liveLabel.setText("Live: " + live);
@@ -189,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
         float ball_3CenterY = ball_3Y;
 
         if (hitCheck(ball_3CenterX, ball_3CenterY)){
+            soundPlayer.playIncorrectSound();
             ball_3Y = frameHeight + 100;
             live -= 1;
             liveLabel.setText("Live: " + live);
@@ -213,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
         float ball_4CenterY = ball_4Y;
 
         if (hitCheck(ball_4CenterX, ball_4CenterY)){
+            soundPlayer.playIncorrectSound();
             ball_4Y = frameHeight + 100;
             live -= 1;
             liveLabel.setText("Live: " + live);
