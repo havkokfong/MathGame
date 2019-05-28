@@ -136,12 +136,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void changePos(){
 
-        //Ball Speed
-        speed1 = random.nextInt((15 - 5) + 1) + 5;
-        speed2 = random.nextInt((10 - 3) + 1) + 3;
-        speed3 = random.nextInt((12 - 7) + 1) + 7;
-        speed4 = random.nextInt((15 - 8) + 1) + 8;
-
         //ball_1
         ball_1Y += speed1;
         float ball_1CenterX = ball_1X ;
@@ -287,6 +281,12 @@ public class MainActivity extends AppCompatActivity {
         ranWrongNum = random.nextInt(5) + 1;
         num1 = random.nextInt(10);
         num2 = random.nextInt(10);
+
+        //Ball Speed
+        speed1 = random.nextInt((15 - 5) + 1) + 5;
+        speed2 = random.nextInt((10 - 3) + 1) + 3;
+        speed3 = random.nextInt((12 - 7) + 1) + 7;
+        speed4 = random.nextInt((15 - 8) + 1) + 8;
 
         if (ranSign == 0){
             result = 0;
