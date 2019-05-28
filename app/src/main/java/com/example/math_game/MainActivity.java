@@ -1,6 +1,7 @@
 package com.example.math_game;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -403,6 +404,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, 0, 20 );
+    }
+
+    public void settings(View view){
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
     }
 
     public void quitGame(View view){

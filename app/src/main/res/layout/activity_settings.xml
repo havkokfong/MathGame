@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Settings"
+    android:background="@drawable/background_blue_with_cloud">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/settings_title"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="100dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/background_choose_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/choose_1"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_blue_with_cloud_game"
+            />
+
+        <Button
+            android:id="@+id/choose_2"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_orange_with_cloud_game"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <Button
+            android:id="@+id/choose_3"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_purple_with_cloud_game"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <Button
+            android:id="@+id/choose_4"
+            android:layout_width="70dp"
+            android:layout_height="100dp"
+            android:background="@drawable/background_natural_with_cloud_game"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/object"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/drop_object_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/object_1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/soccer_ball"/>
+
+        <Button
+            android:id="@+id/object_2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/stone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+        <Button
+            android:id="@+id/object_3"
+            android:layout_width="40dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bottle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="184dp"
+        android:layout_height="85dp"
+        android:layout_gravity="center"
+        android:text="@string/back_text"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:background="@drawable/cloud_button"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

@@ -6,4 +6,9 @@
     <string name="high_score_text">High score: 0</string>
     <string name="score_text">Score: 0</string>
     <string name="title_text">Welcome</string>
+    <string name="options_text">Options</string>
+    <string name="settings_title">Settings</string>
+    <string name="background_choose_text">Background Choose</string>
+    <string name="drop_object_text">Drop Object</string>
+    <string name="back_text">Back</string>
 </resources>
